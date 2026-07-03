@@ -1,720 +1,693 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>はぴタク | 介護福祉タクシー 筑紫野市・太宰府・大野城・久留米・小郡</title>
-  <meta name="description" content="はぴタクは筑紫野市を中心に福岡県全域で運行する介護福祉タクシーです。救急救命士が対応。車いすのまま乗車可能・障害者手帳割引あり。太宰府・大野城・久留米・小郡・甘木にも対応。TEL:090-3603-4400">
-  <meta name="keywords" content="介護タクシー,福祉タクシー,介護福祉タクシー,車いす対応,車椅子タクシー,障害者手帳割引,障碍者割引,筑紫野市,太宰府市,大野城市,久留米市,小郡市,甘木,朝倉,福岡,福岡県,救急救命士,通院送迎,外出支援,高齢者移送,はぴタク,hapitaku,介護保険外,自費移送">
-  <meta property="og:title" content="はぴタク | 介護福祉タクシー 筑紫野市">
-  <meta property="og:description" content="救急救命士が支える、安心・安全・迅速な移動サポート。車いすのまま乗車OK。障害者手帳割引あり。筑紫野・太宰府・大野城・久留米・小郡に対応。TEL:090-3603-4400">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://hapitaku.github.io">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="robots" content="index, follow">
-  <meta name="geo.region" content="JP-40">
-  <meta name="geo.placename" content="筑紫野市">
-  <link rel="canonical" href="https://hapitaku.github.io">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary:   #6DB33F;
-      --primary-d: #4A8A22;
-      --primary-l: #EEF7DC;
-      --accent:    #F5A623;
-      --accent-d:  #D4891A;
-      --soft:      #F8FAF2;
-      --beige:     #F7F2E8;
-      --beige-d:   #EDE4D0;
-      --beige-b:   #D8C9A8;
-      --text:      #3A3A3A;
-      --light:     #FFFFFF;
-      --muted:     #888888;
-      --border:    #C8E6A0;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Kiwi Maru', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-      color: var(--text);
-      background: var(--soft);
-      line-height: 1.8;
-    }
-
-    /* ─── HEADER ─── */
-    header {
-      background: var(--light);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 10px rgba(109,179,63,0.18);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo { display: flex; align-items: center; gap: 10px; }
-    .logo-icon {
-      width: 84px; height: 84px;
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-    }
-    .logo-icon img { width: 84px; height: 84px; object-fit: contain; display: block; }
-    .logo-text { font-size: 1.4rem; font-weight: 500; color: var(--primary-d); letter-spacing: 0.05em; font-family: 'Kiwi Maru', serif; }
-    h2 { font-family: 'Kiwi Maru', serif; font-weight: 500; }
-    .logo-name-jp { font-size: 0.7rem; color: var(--muted); display: block; font-weight: 400; }
-    .logo-sub { font-size: 0.62rem; color: var(--muted); display: block; font-weight: 400; }
-
-    .nav-desktop { display: flex; gap: 20px; }
-    .nav-desktop a {
-      text-decoration: none; color: var(--text); font-size: 0.88rem; font-weight: 500;
-      padding: 6px 0; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap;
-    }
-    .nav-desktop a:hover { color: var(--primary-d); border-color: var(--primary); }
-
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 26px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile {
-      display: none; flex-direction: column;
-      position: fixed; top: 70px; left: 0; right: 0;
-      background: var(--light); box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      z-index: 99; padding: 8px 0 16px;
-    }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      text-decoration: none; color: var(--text); font-size: 1rem; font-weight: 500;
-      padding: 14px 24px; border-bottom: 1px solid var(--border); transition: background 0.2s;
-    }
-    .nav-mobile a:last-child { border-bottom: none; }
-    .nav-mobile a:hover { background: var(--soft); }
-
-    /* ─── HERO ─── */
-    .hero {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 520px; overflow: hidden;
-    }
-    .hero-left {
-      background: linear-gradient(160deg, #7DC43F 0%, #4A8A22 100%);
-      display: flex; flex-direction: column;
-      justify-content: center; padding: 52px 48px;
-      position: relative; overflow: hidden;
-    }
-    .hero-left::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 5px;
-      background: var(--accent);
-    }
-    .hero-right {
-      position: relative; overflow: hidden;
-      min-height: 520px;
-    }
-    .hero-right img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-    .hero-right-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(74,138,34,0.3), transparent);
-    }
-    .hero-badge {
-      background: var(--accent); color: #fff;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;
-      padding: 5px 18px; border-radius: 20px; margin-bottom: 14px;
-      display: inline-block; align-self: flex-start;
-    }
-    .hero-catch {
-      color: rgba(255,255,255,0.88); font-size: 0.92rem;
-      margin-bottom: 10px; letter-spacing: 0.03em;
-    }
-    .hero h1 {
-      color: #fff; font-size: 2.4rem; font-weight: 500;
-      line-height: 1.3; margin-bottom: 18px;
-      font-family: 'Kiwi Maru', serif;
-    }
-    .hero p { color: rgba(255,255,255,0.88); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.7; }
-    .btn-primary {
-      background: var(--accent); color: #fff; border: none;
-      padding: 14px 36px; border-radius: 50px; font-size: 1rem; font-weight: 700;
-      cursor: pointer; text-decoration: none; display: inline-block;
-      box-shadow: 0 4px 18px rgba(245,166,35,0.5); transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,166,35,0.55); }
-
-    /* ─── SECTION ─── */
-    .section-wrap { padding: 64px 20px; max-width: 900px; margin: 0 auto; }
-    .full-bg { background: var(--beige); }
-    .full-bg-green { background: linear-gradient(180deg, var(--soft) 0%, #EAF2D4 100%); }
-    .inner { max-width: 900px; margin: 0 auto; padding: 64px 20px; }
-    .section-label { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--primary); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
-    h2 { font-size: 1.8rem; font-weight: 800; color: #333; margin-bottom: 14px; line-height: 1.4; }
-    h2 span { color: var(--primary-d); }
-    .divider { width: 48px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px; margin-bottom: 32px; }
-
-    /* ─── WORRIES ─── */
-    .worries-bg { background: var(--primary-l); }
-    .worries-inner { max-width: 900px; margin: 0 auto; padding: 56px 20px; }
-    .worries-title {
-      text-align: center; font-size: 1.5rem; font-weight: 800;
-      color: var(--primary-d); margin-bottom: 36px;
-      padding: 12px 32px; background: var(--light);
-      border-radius: 50px; display: inline-block;
-      box-shadow: 0 2px 12px rgba(109,179,63,0.15);
-    }
-    .worries-title-wrap { text-align: center; margin-bottom: 36px; }
-    .worries-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-      max-width: 620px; margin: 0 auto 36px;
-    }
-    .worry-card {
-      background: var(--light);
-      border-radius: 20px; padding: 18px 20px 26px;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      text-align: center;
-      border: 2px solid var(--beige-b);
-      box-shadow: 0 3px 12px rgba(180,150,80,0.12);
-      position: relative;
-    }
-    .worry-card::after {
-      content: '';
-      position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
-      border-left: 12px solid transparent;
-      border-right: 12px solid transparent;
-      border-top: 14px solid var(--light);
-      filter: drop-shadow(0 3px 2px rgba(180,150,80,0.15));
-    }
-    .worry-icon { font-size: 2rem; }
-    .worry-card p { font-size: 0.9rem; font-weight: 500; color: #555; line-height: 1.5; font-family: 'Kiwi Maru', serif; }
-    .worries-answer {
-      text-align: center; background: var(--primary-d); color: #fff;
-      border-radius: 20px; padding: 28px 32px; margin-top: 8px;
-    }
-    .worries-answer h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
-    .worries-answer p { font-size: 0.95rem; opacity: 0.92; line-height: 1.8; }
-
-    /* ─── ABOUT ─── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
-    .about-img { border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px rgba(109,179,63,0.2); }
-    .about-img img { width: 100%; height: 320px; object-fit: cover; display: block; }
-    .about-text p { color: #555; font-size: 0.97rem; margin-bottom: 14px; }
-    .check-list { list-style: none; margin-top: 16px; }
-    .check-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.93rem; }
-    .check-list li::before {
-      content: '✓'; background: var(--primary); color: #fff;
-      width: 20px; height: 20px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 3px;
-    }
-
-    /* ─── REASONS ─── */
-    .reasons-label {
-      display: inline-block; background: var(--accent); color: #fff;
-      font-size: 0.85rem; font-weight: 700; padding: 6px 24px;
-      border-radius: 4px; margin-bottom: 28px;
-    }
-    .reasons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .reason-card {
-      background: var(--beige); border-radius: 28px; padding: 28px 24px;
-      border: 1.5px solid var(--beige-b); display: flex; gap: 16px; align-items: flex-start;
-      transition: transform 0.25s, box-shadow 0.25s;
-      box-shadow: 0 2px 10px rgba(180,150,80,0.1);
-    }
-    .reason-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(109,179,63,0.18); }
-    .reason-num {
-      background: linear-gradient(135deg, var(--primary), var(--primary-d));
-      color: #fff; width: 36px; height: 36px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 800; flex-shrink: 0;
-    }
-    .reason-card h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 6px; line-height: 1.5; }
-    .reason-card p { font-size: 0.85rem; color: #666; line-height: 1.7; }
-
-    /* ─── FLOW ─── */
-    .flow-steps-h { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: start; margin-top: 36px; }
-    .flow-step-h { background: var(--beige); border-radius: 28px; padding: 28px 20px; border: 1.5px solid var(--beige-b); text-align: center; box-shadow: 0 2px 10px rgba(180,150,80,0.1); }
-    .flow-arrow { font-size: 2rem; color: var(--primary); display: flex; align-items: center; justify-content: center; padding-top: 32px; }
-    .flow-num {
-      background: linear-gradient(135deg, var(--primary), var(--primary-d));
-      color: #fff; width: 44px; height: 44px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 800; margin: 0 auto 12px;
-    }
-    .flow-icon { font-size: 2rem; margin-bottom: 10px; }
-    .flow-step-h h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 8px; color: var(--primary-d); }
-    .flow-step-h p { font-size: 0.82rem; color: #666; line-height: 1.7; text-align: left; }
-
-    /* ─── PHOTO BREAK ─── */
-    .photo-break { height: 260px; overflow: hidden; position: relative; }
-    .photo-break img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) saturate(1.15); }
-    .photo-break-text {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: #fff; text-align: center; padding: 20px;
-      background: rgba(0,0,0,0.25);
-    }
-    .photo-break-text h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-    .photo-break-text p { font-size: 0.95rem; opacity: 0.95; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
-
-    /* ─── PRICE ─── */
-    .price-main {
-      background: var(--light); border-radius: 20px; padding: 28px;
-      border: 2px solid var(--primary); margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(109,179,63,0.15);
-    }
-    .price-row {
-      display: flex; align-items: center; gap: 16px;
-      padding: 14px 0; border-bottom: 1px solid var(--border);
-    }
-    .price-row:last-child { border-bottom: none; }
-    .price-row-label {
-      background: var(--primary-d); color: #fff;
-      font-size: 0.8rem; font-weight: 700; padding: 6px 14px;
-      border-radius: 6px; white-space: nowrap;
-      width: 160px; min-width: 160px; max-width: 160px;
-      text-align: center; flex-shrink: 0;
-    }
-    .price-row-body { flex: 1; font-size: 0.95rem; color: #444; }
-    .price-row-body strong { font-size: 1.3rem; color: var(--primary-d); }
-    .price-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-    .price-option {
-      background: var(--primary-l); border: 1px solid var(--border);
-      border-radius: 10px; padding: 10px 18px; font-size: 0.88rem;
-    }
-    .price-option strong { color: var(--primary-d); font-size: 1rem; }
-    .price-notes { background: #FFFDF0; border: 1px solid #F5D080; border-radius: 12px; padding: 16px 20px; }
-    .price-notes p { font-size: 0.85rem; color: #665500; margin-bottom: 4px; }
-    .price-notes p:last-child { margin-bottom: 0; }
-
-    /* ─── CONTACT ─── */
-    .contact-card {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-d) 100%);
-      border-radius: 28px; padding: 52px 40px; text-align: center; color: #fff;
-      box-shadow: 0 16px 48px rgba(74,138,34,0.35);
-    }
-    .contact-card h2 { color: #fff; margin-bottom: 8px; }
-    .contact-card > p { opacity: 0.9; margin-bottom: 28px; font-size: 0.95rem; }
-    .contact-info { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
-    .contact-item {
-      background: rgba(255,255,255,0.18); border-radius: 16px;
-      padding: 18px 24px; backdrop-filter: blur(8px); min-width: 160px;
-    }
-    .contact-item .label { font-size: 0.78rem; opacity: 0.82; margin-bottom: 4px; }
-    .contact-item .value { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.04em; }
-    .contact-item .value.phone { font-size: 1.5rem; }
-    .btn-white {
-      background: #fff; color: var(--primary-d); border: none;
-      padding: 14px 40px; border-radius: 50px; font-size: 1rem; font-weight: 700;
-      cursor: pointer; text-decoration: none; display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-
-    /* ─── SNS LINKS ─── */
-    .sns-section { margin-top: 8px; text-align: center; }
-    .sns-label { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-bottom: 14px; letter-spacing: 0.05em; }
-    .sns-icons { display: flex; gap: 20px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
-    .sns-icon-link {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      background: rgba(255,255,255,0.18); border-radius: 16px;
-      padding: 18px 24px; text-decoration: none; color: #fff;
-      font-size: 1.01rem; font-weight: 700; transition: transform 0.2s, background 0.2s;
-      backdrop-filter: blur(8px); min-width: 160px;
-    }
-    .sns-icon-link:hover { transform: translateY(-2px); background: rgba(255,255,255,0.28); }
-    .sns-icon-link svg { width: 36px; height: 36px; flex-shrink: 0; }
-
-    /* ─── CONTENT FONT ×1.3 ─── */
-    .worry-card p { font-size: 1.17rem !important; }
-    .worries-title { font-size: 1.95rem !important; }
-    .worries-answer h3 { font-size: 1.82rem !important; }
-    .worries-answer p { font-size: 1.24rem !important; }
-    .about-text p { font-size: 1.26rem !important; }
-    .check-list li { font-size: 1.21rem !important; }
-    .reasons-label { font-size: 1.11rem !important; }
-    .reason-card h3 { font-size: 1.24rem !important; }
-    .reason-card p { font-size: 1.11rem !important; }
-    .flow-step-h h3 { font-size: 1.26rem !important; }
-    .flow-step-h p { font-size: 1.07rem !important; }
-    .price-row-body { font-size: 1.24rem !important; }
-    .price-option { font-size: 1.14rem !important; }
-    .price-notes p { font-size: 1.11rem !important; }
-    .contact-card > p { font-size: 1.24rem !important; }
-    .contact-item .label { font-size: 1.01rem !important; }
-    .contact-item .value { font-size: 1.5rem !important; }
-    .contact-item .value.phone { font-size: 1.95rem !important; }
-
-    /* ─── QR ─── */
-    .qr-section { background: var(--soft); padding: 48px 20px; text-align: center; border-top: 1px solid var(--border); }
-
-    /* ─── FOOTER ─── */
-    footer { background: #2D4A1A; color: rgba(255,255,255,0.72); text-align: center; padding: 32px 20px; font-size: 0.85rem; }
-    footer .footer-logo { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    footer .footer-address { font-size: 0.82rem; margin-bottom: 10px; }
-    footer .footer-links { margin: 12px 0; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    footer .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    footer .footer-links a:hover { color: #fff; }
-
-    /* ═══ RESPONSIVE ═══ */
-    @media (max-width: 768px) {
-      .nav-desktop { display: none; }
-      .hamburger { display: flex; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { min-height: 260px; }
-      .hero h1 { font-size: 1.8rem; }
-      .hero-left { padding: 36px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-img img { height: 260px; }
-      .reasons-grid { grid-template-columns: 1fr; }
-      .worries-grid { grid-template-columns: 1fr; }
-      .flow-steps-h { grid-template-columns: 1fr; }
-      .flow-arrow { display: none; }
-      .contact-card { padding: 36px 20px; }
-      .contact-info { flex-direction: column; align-items: center; }
-      .contact-item { width: 100%; }
-      .price-row { flex-wrap: wrap; }
-      .price-row-label { min-width: unset; }
-    }
-
-    @media (max-width: 480px) {
-      .hero-right { min-height: 200px; }
-      .hero h1 { font-size: 1.5rem; }
-      .hero-catch { font-size: 0.82rem; }
-      .section-wrap, .inner, .worries-inner { padding: 48px 16px; }
-      h2 { font-size: 1.45rem; }
-      .photo-break { height: 210px; }
-      .photo-break-text h3 { font-size: 1.2rem; }
-      footer .footer-links { gap: 12px; font-size: 0.8rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はぴタク | 介護福祉タクシー 筑紫野市・太宰府・大野城・久留米・小郡</title>
+<meta name="description" content="はぴタクは筑紫野市を中心に福岡県全域で運行する介護福祉タクシーです。救急救命士が対応。車いすのまま乗車可能・障害者手帳割引あり。太宰府・大野城・久留米・小郡・甘木にも対応。TEL:090-3603-4400">
+<meta name="keywords" content="介護タクシー,福祉タクシー,介護福祉タクシー,車いす対応,車椅子タクシー,障害者手帳割引,障碍者割引,筑紫野市,太宰府市,大野城市,久留米市,小郡市,甘木,朝倉,福岡,福岡県,救急救命士,通院送迎,外出支援,高齢者移送,はぴタク,hapitaku,介護保険外,自費移送">
+<meta property="og:title" content="はぴタク | 介護福祉タクシー 筑紫野市">
+<meta property="og:description" content="救急救命士が支える、安心・安全・迅速な移動サポート。車いすのまま乗車OK。障害者手帳割引あり。筑紫野・太宰府・大野城・久留米・小郡に対応。TEL:090-3603-4400">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hapitaku.github.io">
+<meta property="og:locale" content="ja_JP">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="JP-40">
+<meta name="geo.placename" content="筑紫野市">
+<link rel="canonical" href="https://hapitaku.github.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+--primary: #6DB33F;
+--primary-d: #4A8A22;
+--primary-l: #EEF7DC;
+--accent: #F5A623;
+--accent-d: #D4891A;
+--soft: #F8FAF2;
+--beige: #F7F2E8;
+--beige-d: #EDE4D0;
+--beige-b: #D8C9A8;
+--text: #3A3A3A;
+--light: #FFFFFF;
+--muted: #888888;
+--border: #C8E6A0;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+font-family: 'Kiwi Maru', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+color: var(--text);
+background: var(--soft);
+line-height: 1.8;
+}
+/* ─── HEADER ─── */
+header {
+background: var(--light);
+padding: 12px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+box-shadow: 0 2px 10px rgba(109,179,63,0.18);
+position: sticky;
+top: 0;
+z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+width: 84px; height: 84px;
+flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.logo-icon img { width: 84px; height: 84px; object-fit: contain; display: block; }
+.logo-text { font-size: 1.4rem; font-weight: 500; color: var(--primary-d); letter-spacing: 0.05em; font-family: 'Kiwi Maru', serif; }
+h2 { font-family: 'Kiwi Maru', serif; font-weight: 500; }
+.logo-name-jp {
+  font-size: 0.7rem; color: var(--muted); font-weight: 400;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.logo-license { font-size: 0.65rem; color: var(--muted); font-weight: 400; }
+.logo-sub { font-size: 0.62rem; color: var(--muted); display: block; font-weight: 400; }
+.nav-desktop { display: flex; gap: 20px; }
+.nav-desktop a {
+text-decoration: none; color: var(--text); font-size: 0.88rem; font-weight: 500;
+padding: 6px 0; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap;
+}
+.nav-desktop a:hover { color: var(--primary-d); border-color: var(--primary); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 26px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile {
+display: none; flex-direction: column;
+position: fixed; top: 70px; left: 0; right: 0;
+background: var(--light); box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+z-index: 99; padding: 8px 0 16px;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+text-decoration: none; color: var(--text); font-size: 1rem; font-weight: 500;
+padding: 14px 24px; border-bottom: 1px solid var(--border); transition: background 0.2s;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile a:hover { background: var(--soft); }
+/* ─── HERO ─── */
+.hero {
+display: grid; grid-template-columns: 1fr 1fr;
+min-height: 520px; overflow: hidden;
+}
+.hero-left {
+background: linear-gradient(160deg, #7DC43F 0%, #4A8A22 100%);
+display: flex; flex-direction: column;
+justify-content: center; padding: 52px 48px;
+position: relative; overflow: hidden;
+}
+.hero-left::before {
+content: '';
+position: absolute; top: 0; left: 0; right: 0; height: 5px;
+background: var(--accent);
+}
+.hero-right {
+position: relative; overflow: hidden;
+min-height: 520px;
+}
+.hero-right img {
+width: 100%; height: 100%; object-fit: cover;
+object-position: center;
+display: block;
+}
+.hero-right-overlay {
+position: absolute; inset: 0;
+background: linear-gradient(to right, rgba(74,138,34,0.3), transparent);
+}
+.hero-badge {
+background: var(--accent); color: #fff;
+font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;
+padding: 5px 18px; border-radius: 20px; margin-bottom: 14px;
+display: inline-block; align-self: flex-start;
+}
+.hero-catch {
+color: rgba(255,255,255,0.88); font-size: 0.92rem;
+margin-bottom: 10px; letter-spacing: 0.03em;
+}
+.hero h1 {
+color: #fff; font-size: 2.4rem; font-weight: 500;
+line-height: 1.3; margin-bottom: 18px;
+font-family: 'Kiwi Maru', serif;
+}
+.hero p { color: rgba(255,255,255,0.88); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.7; }
+.btn-primary {
+background: var(--accent); color: #fff; border: none;
+padding: 14px 36px; border-radius: 50px; font-size: 1rem; font-weight: 700;
+cursor: pointer; text-decoration: none; display: inline-block;
+box-shadow: 0 4px 18px rgba(245,166,35,0.5); transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,166,35,0.55); }
+/* ─── SECTION ─── */
+.section-wrap { padding: 64px 20px; max-width: 900px; margin: 0 auto; }
+.full-bg { background: var(--beige); }
+.full-bg-green { background: linear-gradient(180deg, var(--soft) 0%, #EAF2D4 100%); }
+.inner { max-width: 900px; margin: 0 auto; padding: 64px 20px; }
+.section-label { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--primary); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+h2 { font-size: 1.8rem; font-weight: 800; color: #333; margin-bottom: 14px; line-height: 1.4; }
+h2 span { color: var(--primary-d); }
+.divider { width: 48px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px; margin-bottom: 32px; }
+/* ─── WORRIES ─── */
+.worries-bg { background: var(--primary-l); }
+.worries-inner { max-width: 900px; margin: 0 auto; padding: 56px 20px; }
+.worries-title {
+text-align: center; font-size: 1.5rem; font-weight: 800;
+color: var(--primary-d); margin-bottom: 36px;
+padding: 12px 32px; background: var(--light);
+border-radius: 50px; display: inline-block;
+box-shadow: 0 2px 12px rgba(109,179,63,0.15);
+}
+.worries-title-wrap { text-align: center; margin-bottom: 36px; }
+.worries-grid {
+display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+max-width: 620px; margin: 0 auto 36px;
+}
+.worry-card {
+background: var(--light);
+border-radius: 20px; padding: 18px 20px 26px;
+display: flex; flex-direction: column; align-items: center; gap: 8px;
+text-align: center;
+border: 2px solid var(--beige-b);
+box-shadow: 0 3px 12px rgba(180,150,80,0.12);
+position: relative;
+}
+.worry-card::after {
+content: '';
+position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+border-left: 12px solid transparent;
+border-right: 12px solid transparent;
+border-top: 14px solid var(--light);
+filter: drop-shadow(0 3px 2px rgba(180,150,80,0.15));
+}
+.worry-icon { font-size: 2rem; }
+.worry-card p { font-size: 0.9rem; font-weight: 500; color: #555; line-height: 1.5; font-family: 'Kiwi Maru', serif; }
+.worries-answer {
+text-align: center; background: var(--primary-d); color: #fff;
+border-radius: 20px; padding: 28px 32px; margin-top: 8px;
+}
+.worries-answer h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+.worries-answer p { font-size: 0.95rem; opacity: 0.92; line-height: 1.8; }
+/* ─── ABOUT ─── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+.about-img { border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px rgba(109,179,63,0.2); }
+.about-img img { width: 100%; height: 320px; object-fit: cover; display: block; }
+.about-text p { color: #555; font-size: 0.97rem; margin-bottom: 14px; }
+.check-list { list-style: none; margin-top: 16px; }
+.check-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 0.93rem; }
+.check-list li::before {
+content: '✓'; background: var(--primary); color: #fff;
+width: 20px; height: 20px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 3px;
+}
+/* ─── REASONS ─── */
+.reasons-label {
+display: inline-block; background: var(--accent); color: #fff;
+font-size: 0.85rem; font-weight: 700; padding: 6px 24px;
+border-radius: 4px; margin-bottom: 28px;
+}
+.reasons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.reason-card {
+background: var(--beige); border-radius: 28px; padding: 28px 24px;
+border: 1.5px solid var(--beige-b); display: flex; gap: 16px; align-items: flex-start;
+transition: transform 0.25s, box-shadow 0.25s;
+box-shadow: 0 2px 10px rgba(180,150,80,0.1);
+}
+.reason-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(109,179,63,0.18); }
+.reason-num {
+background: linear-gradient(135deg, var(--primary), var(--primary-d));
+color: #fff; width: 36px; height: 36px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1rem; font-weight: 800; flex-shrink: 0;
+}
+.reason-card h3 { font-size: 0.95rem; font-weight: 700; color: #333; margin-bottom: 6px; line-height: 1.5; }
+.reason-card p { font-size: 0.85rem; color: #666; line-height: 1.7; }
+/* ─── FLOW ─── */
+.flow-steps-h { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: start; margin-top: 36px; }
+.flow-step-h { background: var(--beige); border-radius: 28px; padding: 28px 20px; border: 1.5px solid var(--beige-b); text-align: center; box-shadow: 0 2px 10px rgba(180,150,80,0.1); }
+.flow-arrow { font-size: 2rem; color: var(--primary); display: flex; align-items: center; justify-content: center; padding-top: 32px; }
+.flow-num {
+background: linear-gradient(135deg, var(--primary), var(--primary-d));
+color: #fff; width: 44px; height: 44px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1rem; font-weight: 800; margin: 0 auto 12px;
+}
+.flow-icon { font-size: 2rem; margin-bottom: 10px; }
+.flow-step-h h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 8px; color: var(--primary-d); }
+.flow-step-h p { font-size: 0.82rem; color: #666; line-height: 1.7; text-align: left; }
+/* ─── PHOTO BREAK ─── */
+.photo-break { height: 260px; overflow: hidden; position: relative; }
+.photo-break img { width: 100%; height: 100%; object-fit: cover; filter: brightness(1.1) saturate(1.15); }
+.photo-break-text {
+position: absolute; inset: 0;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+color: #fff; text-align: center; padding: 20px;
+background: rgba(0,0,0,0.25);
+}
+.photo-break-text h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.photo-break-text p { font-size: 0.95rem; opacity: 0.95; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+/* ─── PRICE ─── */
+.price-main {
+background: var(--light); border-radius: 20px; padding: 28px;
+border: 2px solid var(--primary); margin-bottom: 24px;
+box-shadow: 0 4px 20px rgba(109,179,63,0.15);
+}
+.price-row {
+display: flex; align-items: center; gap: 16px;
+padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.price-row:last-child { border-bottom: none; }
+.price-row-label {
+background: var(--primary-d); color: #fff;
+font-size: 0.8rem; font-weight: 700; padding: 6px 14px;
+border-radius: 6px; white-space: nowrap;
+width: 160px; min-width: 160px; max-width: 160px;
+text-align: center; flex-shrink: 0;
+}
+.price-row-body { flex: 1; font-size: 0.95rem; color: #444; }
+.price-row-body strong { font-size: 1.3rem; color: var(--primary-d); }
+.price-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.price-option {
+background: var(--primary-l); border: 1px solid var(--border);
+border-radius: 10px; padding: 10px 18px; font-size: 0.88rem;
+}
+.price-option strong { color: var(--primary-d); font-size: 1rem; }
+.price-notes { background: #FFFDF0; border: 1px solid #F5D080; border-radius: 12px; padding: 16px 20px; }
+.price-notes p { font-size: 0.85rem; color: #665500; margin-bottom: 4px; }
+.price-notes p:last-child { margin-bottom: 0; }
+/* ─── CONTACT ─── */
+.contact-card {
+background: linear-gradient(135deg, var(--primary) 0%, var(--primary-d) 100%);
+border-radius: 28px; padding: 52px 40px; text-align: center; color: #fff;
+box-shadow: 0 16px 48px rgba(74,138,34,0.35);
+}
+.contact-card h2 { color: #fff; margin-bottom: 8px; }
+.contact-card > p { opacity: 0.9; margin-bottom: 28px; font-size: 0.95rem; }
+.contact-info { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+.contact-item {
+background: rgba(255,255,255,0.18); border-radius: 16px;
+padding: 18px 24px; backdrop-filter: blur(8px); min-width: 160px;
+}
+.contact-item .label { font-size: 0.78rem; opacity: 0.82; margin-bottom: 4px; }
+.contact-item .value { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.04em; }
+.contact-item .value.phone { font-size: 1.5rem; }
+.btn-white {
+background: #fff; color: var(--primary-d); border: none;
+padding: 14px 40px; border-radius: 50px; font-size: 1rem; font-weight: 700;
+cursor: pointer; text-decoration: none; display: inline-block;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+/* ─── SNS LINKS ─── */
+.sns-section { margin-top: 8px; text-align: center; }
+.sns-label { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-bottom: 14px; letter-spacing: 0.05em; }
+.sns-icons { display: flex; gap: 20px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+.sns-icon-link {
+display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+background: rgba(255,255,255,0.18); border-radius: 16px;
+padding: 18px 24px; text-decoration: none; color: #fff;
+font-size: 1.01rem; font-weight: 700; transition: transform 0.2s, background 0.2s;
+backdrop-filter: blur(8px); min-width: 160px;
+}
+.sns-icon-link:hover { transform: translateY(-2px); background: rgba(255,255,255,0.28); }
+.sns-icon-link svg { width: 36px; height: 36px; flex-shrink: 0; }
+/* ─── CONTENT FONT ×1.3 ─── */
+.worry-card p { font-size: 1.17rem !important; }
+.worries-title { font-size: 1.95rem !important; }
+.worries-answer h3 { font-size: 1.82rem !important; }
+.worries-answer p { font-size: 1.24rem !important; }
+.about-text p { font-size: 1.26rem !important; }
+.check-list li { font-size: 1.21rem !important; }
+.reasons-label { font-size: 1.11rem !important; }
+.reason-card h3 { font-size: 1.24rem !important; }
+.reason-card p { font-size: 1.11rem !important; }
+.flow-step-h h3 { font-size: 1.26rem !important; }
+.flow-step-h p { font-size: 1.07rem !important; }
+.price-row-body { font-size: 1.24rem !important; }
+.price-option { font-size: 1.14rem !important; }
+.price-notes p { font-size: 1.11rem !important; }
+.contact-card > p { font-size: 1.24rem !important; }
+.contact-item .label { font-size: 1.01rem !important; }
+.contact-item .value { font-size: 1.5rem !important; }
+.contact-item .value.phone { font-size: 1.95rem !important; }
+/* ─── QR ─── */
+.qr-section { background: var(--soft); padding: 48px 20px; text-align: center; border-top: 1px solid var(--border); }
+/* ─── FOOTER ─── */
+footer { background: #2D4A1A; color: rgba(255,255,255,0.72); text-align: center; padding: 32px 20px; font-size: 0.85rem; }
+footer .footer-logo { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+footer .footer-address { font-size: 0.82rem; margin-bottom: 10px; }
+footer .footer-links { margin: 12px 0; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+footer .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+footer .footer-links a:hover { color: #fff; }
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+.nav-desktop { display: none; }
+.hamburger { display: flex; }
+.hero { grid-template-columns: 1fr; min-height: auto; }
+.hero-right { min-height: 260px; }
+.hero h1 { font-size: 1.8rem; }
+.hero-left { padding: 36px 24px; }
+.about-grid { grid-template-columns: 1fr; }
+.about-img img { height: 260px; }
+.reasons-grid { grid-template-columns: 1fr; }
+.worries-grid { grid-template-columns: 1fr; }
+.flow-steps-h { grid-template-columns: 1fr; }
+.flow-arrow { display: none; }
+.contact-card { padding: 36px 20px; }
+.contact-info { flex-direction: column; align-items: center; }
+.contact-item { width: 100%; }
+.price-row { flex-wrap: wrap; }
+.price-row-label { min-width: unset; }
+}
+@media (max-width: 480px) {
+.hero-right { min-height: 200px; }
+.hero h1 { font-size: 1.5rem; }
+.hero-catch { font-size: 0.82rem; }
+.section-wrap, .inner, .worries-inner { padding: 48px 16px; }
+h2 { font-size: 1.45rem; }
+.photo-break { height: 210px; }
+.photo-break-text h3 { font-size: 1.2rem; }
+footer .footer-links { gap: 12px; font-size: 0.8rem; }
+}
+</style>
 </head>
 <body>
-
 <!-- HEADER -->
 <header>
-  <div class="logo">
-    <div class="logo-icon"><img src="logo.png" alt="はぴタク ロゴ"></div>
-    <div>
-      <div class="logo-text">はぴタク</div>
-      <span class="logo-name-jp">介護福祉タクシー</span>
-      <span class="logo-sub">救急救命士による安全・安心な移送サービス</span>
-    </div>
-  </div>
-  <nav class="nav-desktop">
-    <a href="#about">サービス概要</a>
-    <a href="#reasons">選ばれる理由</a>
-    <a href="#flow">ご利用の流れ</a>
-    <a href="#price">料金表</a>
-    <a href="#contact">お問い合わせ</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </button>
+<div class="logo">
+<div class="logo-icon"><img src="logo.png" alt="はぴタク ロゴ"></div>
+<div>
+<div class="logo-text">はぴタク</div>
+<div class="logo-name-jp">
+  <span>介護福祉タクシー</span>
+  <span class="logo-license">九運旅二第775号</span>
+</div>
+<span class="logo-sub">救急救命士による安全・安心な移送サービス</span>
+</div>
+</div>
+<nav class="nav-desktop">
+<a href="#about">サービス概要</a>
+<a href="#reasons">選ばれる理由</a>
+<a href="#flow">ご利用の流れ</a>
+<a href="#price">料金表</a>
+<a href="#contact">お問い合わせ</a>
+</nav>
+<button class="hamburger" id="hamburger" aria-label="メニュー">
+<span></span><span></span><span></span>
+</button>
 </header>
-
 <!-- MOBILE NAV -->
 <nav class="nav-mobile" id="nav-mobile">
-  <a href="#about" onclick="closeMenu()">サービス概要</a>
-  <a href="#reasons" onclick="closeMenu()">選ばれる理由</a>
-  <a href="#flow" onclick="closeMenu()">ご利用の流れ</a>
-  <a href="#price" onclick="closeMenu()">料金表</a>
-  <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
+<a href="#about" onclick="closeMenu()">サービス概要</a>
+<a href="#reasons" onclick="closeMenu()">選ばれる理由</a>
+<a href="#flow" onclick="closeMenu()">ご利用の流れ</a>
+<a href="#price" onclick="closeMenu()">料金表</a>
+<a href="#contact" onclick="closeMenu()">お問い合わせ</a>
 </nav>
-
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">筑紫野市を中心に 福祉車両専門</div>
-    <p class="hero-catch">救急救命士が支える、安心・安全・迅速な移動サポート</p>
-    <h1>もう、移動を<br>あきらめない<br>毎日へ。</h1>
-    <p>介護福祉タクシーで！<br>はぴタクが、あなたの「行きたい」を全力でお手伝いします。</p>
-    <a href="#contact" class="btn-primary">📞 まずはお気軽にご相談ください</a>
-  </div>
-  <div class="hero-right">
-    <img src="TOP2.png" alt="介護福祉タクシー はぴタク 車両">
-    <div class="hero-right-overlay"></div>
-  </div>
+<div class="hero-left">
+<div class="hero-badge">筑紫野市を中心に 福祉車両専門</div>
+<p class="hero-catch">救急救命士が支える、安心・安全・迅速な移動サポート</p>
+<h1>もう、移動を<br>あきらめない<br>毎日へ。</h1>
+<p>介護福祉タクシーで！<br>はぴタクが、あなたの「行きたい」を全力でお手伝いします。</p>
+<a href="#contact" class="btn-primary">📞 まずはお気軽にご相談ください</a>
 </div>
-
+<div class="hero-right">
+<img src="TOP2.png" alt="介護福祉タクシー はぴタク 車両">
+<div class="hero-right-overlay"></div>
+</div>
+</div>
 <!-- WORRIES -->
 <div class="worries-bg">
-  <div class="worries-inner">
-    <div class="worries-title-wrap">
-      <span class="worries-title">こんなお悩みありませんか？</span>
-    </div>
-    <div class="worries-grid">
-      <div class="worry-card">
-        <div class="worry-icon">😟</div>
-        <p>一人での<br>移動が不安</p>
-      </div>
-      <div class="worry-card">
-        <div class="worry-icon">💭</div>
-        <p>転倒や体調の<br>急変が心配</p>
-      </div>
-      <div class="worry-card">
-        <div class="worry-icon">🏥</div>
-        <p>通院や外出が<br>負担に感じる</p>
-      </div>
-      <div class="worry-card">
-        <div class="worry-icon">🤝</div>
-        <p>家族に迷惑を<br>かけたくない</p>
-      </div>
-    </div>
-    <div class="worries-answer">
-      <h3>そのお悩み、はぴタクがサポートします！</h3>
-      <p>はぴタクは、救急救命士として10年以上の現場経験を持つドライバーが、<br>安心・安全・迅速な移動をサポートする介護福祉タクシーです。<br>日常の移動を支え、安心して暮らせる毎日をサポートします。</p>
-    </div>
-  </div>
+<div class="worries-inner">
+<div class="worries-title-wrap">
+<span class="worries-title">こんなお悩みありませんか？</span>
 </div>
-
+<div class="worries-grid">
+<div class="worry-card">
+<div class="worry-icon">😟</div>
+<p>一人での<br>移動が不安</p>
+</div>
+<div class="worry-card">
+<div class="worry-icon">💭</div>
+<p>転倒や体調の<br>急変が心配</p>
+</div>
+<div class="worry-card">
+<div class="worry-icon">🏥</div>
+<p>通院や外出が<br>負担に感じる</p>
+</div>
+<div class="worry-card">
+<div class="worry-icon">🤝</div>
+<p>家族に迷惑を<br>かけたくない</p>
+</div>
+</div>
+<div class="worries-answer">
+<h3>そのお悩み、はぴタクがサポートします！</h3>
+<p>はぴタクは、救急救命士として10年以上の現場経験を持つドライバーが、<br>安心・安全・迅速な移動をサポートする介護福祉タクシーです。<br>日常の移動を支え、安心して暮らせる毎日をサポートします。</p>
+</div>
+</div>
+</div>
 <!-- ABOUT -->
 <section id="about" class="section-wrap">
-  <div class="section-label">About</div>
-  <h2>介護福祉タクシーとは<br><span>どんなサービス？</span></h2>
-  <div class="divider"></div>
-  <div class="about-grid">
-    <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1735728092177-0cfee62fce55?w=800&q=80" alt="はぴタク 介護サービスイメージ">
-    </div>
-    <div class="about-text">
-      <p>介護福祉タクシー はぴタクは、車いすをご利用の方など、一般の交通機関の利用が難しい方を対象とした移送サービスです。</p>
-      <p>乗降時の介助から目的地への移動まで、救急救命士の資格を持つドライバーが丁寧にサポートします。病院への通院だけでなく、買い物・観光・冠婚葬祭など幅広いシーンでご利用いただけます。</p>
-      <ul class="check-list">
-        <li>車いす専用の軽乗用車（車いすのまま乗車可能）</li>
-        <li>救急救命士の資格を持つドライバーが対応</li>
-        <li>通院・外出・旅行・冠婚葬祭など幅広く対応</li>
-        <li>介護保険適応外（付き添いの方も同乗可能 2名まで）</li>
-      </ul>
-    </div>
-  </div>
+<div class="section-label">About</div>
+<h2>介護福祉タクシーとは<br><span>どんなサービス？</span></h2>
+<div class="divider"></div>
+<div class="about-grid">
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1735728092177-0cfee62fce55?w=800&q=80" alt="はぴタク 介護サービスイメージ">
+</div>
+<div class="about-text">
+<p>介護福祉タクシー はぴタクは、車いすをご利用の方など、一般の交通機関の利用が難しい方を対象とした移送サービスです。</p>
+<p>乗降時の介助から目的地への移動まで、救急救命士の資格を持つドライバーが丁寧にサポートします。病院への通院だけでなく、買い物・観光・冠婚葬祭など幅広いシーンでご利用いただけます。</p>
+<ul class="check-list">
+<li>車いす専用の軽乗用車（車いすのまま乗車可能）</li>
+<li>救急救命士の資格を持つドライバーが対応</li>
+<li>通院・外出・旅行・冠婚葬祭など幅広く対応</li>
+<li>介護保険適応外（付き添いの方も同乗可能 2名まで）</li>
+</ul>
+</div>
+</div>
 </section>
-
 <!-- REASONS -->
 <div class="full-bg" id="reasons">
-  <div class="inner">
-    <div class="section-label">Why choose us</div>
-    <h2>はぴタクが<br><span>選ばれる理由</span></h2>
-    <div class="divider"></div>
-    <div class="reasons-label">選ばれる理由</div>
-    <div class="reasons-grid">
-      <div class="reason-card">
-        <div class="reason-num">1</div>
-        <div>
-          <h3>救急救命士の経験による高い対応力</h3>
-          <p>10年以上の消防・救急の現場経験を持つドライバーが対応。体調急変時も迅速・冷静に対処します。</p>
-        </div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">2</div>
-        <div>
-          <h3>トレーニング継続による安全で安定したサポート</h3>
-          <p>日々のトレーニングを欠かさず、常に最高のサービスを提供できるよう努めています。</p>
-        </div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">3</div>
-        <div>
-          <h3>お一人おひとりに合わせた柔軟な対応</h3>
-          <p>お体の状況・ご要望・目的に応じて、きめ細かく対応いたします。はじめての方も安心してご利用ください。</p>
-        </div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-num">4</div>
-        <div>
-          <h3>医療現場の知識・経験が豊富で安心</h3>
-          <p>医療・救急の知識をもとに、病院での院内移動サポートも対応可能。安心してお任せいただけます。</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="inner">
+<div class="section-label">Why choose us</div>
+<h2>はぴタクが<br><span>選ばれる理由</span></h2>
+<div class="divider"></div>
+<div class="reasons-label">選ばれる理由</div>
+<div class="reasons-grid">
+<div class="reason-card">
+<div class="reason-num">1</div>
+<div>
+<h3>救急救命士の経験による高い対応力</h3>
+<p>10年以上の消防・救急の現場経験を持つドライバーが対応。体調急変時も迅速・冷静に対処します。</p>
 </div>
-
+</div>
+<div class="reason-card">
+<div class="reason-num">2</div>
+<div>
+<h3>トレーニング継続による安全で安定したサポート</h3>
+<p>日々のトレーニングを欠かさず、常に最高のサービスを提供できるよう努めています。</p>
+</div>
+</div>
+<div class="reason-card">
+<div class="reason-num">3</div>
+<div>
+<h3>お一人おひとりに合わせた柔軟な対応</h3>
+<p>お体の状況・ご要望・目的に応じて、きめ細かく対応いたします。はじめての方も安心してご利用ください。</p>
+</div>
+</div>
+<div class="reason-card">
+<div class="reason-num">4</div>
+<div>
+<h3>医療現場の知識・経験が豊富で安心</h3>
+<p>医療・救急の知識をもとに、病院での院内移動サポートも対応可能。安心してお任せいただけます。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- FLOW -->
 <section id="flow" class="section-wrap">
-  <div class="section-label">Flow</div>
-  <h2>ご利用の<span>流れ</span></h2>
-  <div class="divider"></div>
-  <div class="flow-steps-h">
-    <div class="flow-step-h">
-      <div class="flow-num">①</div>
-      <div class="flow-icon">📞</div>
-      <h3>ご予約</h3>
-      <p>ご利用日時・お名前・出発地・目的地に加え、介助内容（階段の有無やご自宅の廊下の広さなど）をお伺いします。</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step-h">
-      <div class="flow-num">②</div>
-      <div class="flow-icon">🚐</div>
-      <h3>サービスのご提供</h3>
-      <p>ご指定の場所へお伺いし、サポートを行います。安心してご利用いただけるよう、丁寧に対応いたします。</p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step-h">
-      <div class="flow-num">③</div>
-      <div class="flow-icon">💴</div>
-      <h3>料金のお支払い</h3>
-      <p>目的地到着後にお支払いとなります。帰宅までのサービスをご利用の際はご相談ください。</p>
-    </div>
-  </div>
+<div class="section-label">Flow</div>
+<h2>ご利用の<span>流れ</span></h2>
+<div class="divider"></div>
+<div class="flow-steps-h">
+<div class="flow-step-h">
+<div class="flow-num">①</div>
+<div class="flow-icon">📞</div>
+<h3>ご予約</h3>
+<p>ご利用日時・お名前・出発地・目的地に加え、介助内容（階段の有無やご自宅の廊下の広さなど）をお伺いします。</p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step-h">
+<div class="flow-num">②</div>
+<div class="flow-icon">🚐</div>
+<h3>サービスのご提供</h3>
+<p>ご指定の場所へお伺いし、サポートを行います。安心してご利用いただけるよう、丁寧に対応いたします。</p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-step-h">
+<div class="flow-num">③</div>
+<div class="flow-icon">💴</div>
+<h3>料金のお支払い</h3>
+<p>目的地到着後にお支払いとなります。帰宅までのサービスをご利用の際はご相談ください。</p>
+</div>
+</div>
 </section>
-
 <!-- PHOTO BREAK -->
 <div class="photo-break">
-  <img src="https://images.unsplash.com/photo-1765692089840-97414f5b74fe?w=1600&q=80" alt="京都 哲学の道 桜並木">
-  <div class="photo-break-text">
-    <h3>どんなことでも、まずはお気軽にご相談ください。</h3>
-    <p>はぴタクがあなたの「行きたい」を全力でサポートします</p>
-  </div>
+<img src="https://images.unsplash.com/photo-1765692089840-97414f5b74fe?w=1600&q=80" alt="京都 哲学の道 桜並木">
+<div class="photo-break-text">
+<h3>どんなことでも、まずはお気軽にご相談ください。</h3>
+<p>はぴタクがあなたの「行きたい」を全力でサポートします</p>
 </div>
-
+</div>
 <!-- PRICE -->
 <section id="price" class="section-wrap">
-  <div class="section-label">Price</div>
-  <h2>料金表</h2>
-  <div class="divider"></div>
-  <div class="price-main">
-    <div class="price-row">
-      <div class="price-row-label">距離制運賃</div>
-      <div class="price-row-body">
-        初乗運賃 1.6kmまで <strong>800円</strong>　 278mごと <strong>80円</strong> ＋ 送車料金
-      </div>
-    </div>
-    <div class="price-row">
-      <div class="price-row-label">時間制運賃（貸切）</div>
-      <div class="price-row-body">
-        30分　<strong>2,420円</strong>
-      </div>
-    </div>
-    <div class="price-row">
-      <div class="price-row-label">基本介助料</div>
-      <div class="price-row-body">
-        車両までの移動・院内移動など　<strong>1,000円〜3,000円</strong>
-      </div>
-    </div>
-  </div>
-  <div class="price-options">
-    <div class="price-option">🌙 深夜早朝（22時〜5時） <strong>2割増</strong></div>
-    <div class="price-option">🚗 遠距離割引（9,000円以上） <strong>1割引</strong></div>
-    <div class="price-option">♿ 各種障害者手帳をお持ちの方 <strong>1割引</strong></div>
-  </div>
-  <div class="price-notes">
-    <p>※ 介護保険はご利用いただけません</p>
-    <p>※ 付き添いの方も同乗可能（2名まで）</p>
-    <p>※ 料金は目安です（交通状況等により変動する場合があります）</p>
-    <p>※ 車椅子対応車両（軽自動車）でお伺いします</p>
-  </div>
+<div class="section-label">Price</div>
+<h2>料金表</h2>
+<div class="divider"></div>
+<div class="price-main">
+<div class="price-row">
+<div class="price-row-label">距離制運賃</div>
+<div class="price-row-body">
+初乗運賃 1.6kmまで <strong>800円</strong> 278mごと <strong>80円</strong> ＋ 送車料金
+</div>
+</div>
+<div class="price-row">
+<div class="price-row-label">時間制運賃（貸切）</div>
+<div class="price-row-body">
+30分 <strong>2,420円</strong>
+</div>
+</div>
+<div class="price-row">
+<div class="price-row-label">基本介助料</div>
+<div class="price-row-body">
+車両までの移動・院内移動など <strong>1,000円〜3,000円</strong>
+</div>
+</div>
+</div>
+<div class="price-options">
+<div class="price-option">🌙 深夜早朝（22時〜5時） <strong>2割増</strong></div>
+<div class="price-option">🚗 遠距離割引（9,000円以上） <strong>1割引</strong></div>
+<div class="price-option">♿ 各種障害者手帳をお持ちの方 <strong>1割引</strong></div>
+</div>
+<div class="price-notes">
+<p>※ 介護保険はご利用いただけません</p>
+<p>※ 付き添いの方も同乗可能（2名まで）</p>
+<p>※ 料金は目安です（交通状況等により変動する場合があります）</p>
+<p>※ 車椅子対応車両（軽自動車）でお伺いします</p>
+</div>
 </section>
-
 <!-- CONTACT -->
 <div class="full-bg" id="contact">
-  <div class="inner">
-    <div class="section-label">Contact</div>
-    <h2>お問い合わせ・<span>ご予約</span></h2>
-    <div class="divider"></div>
-    <div class="contact-card">
-      <h2>どんなことでも、まずはお気軽にご相談ください。</h2>
-      <p>予約・相談・見積もり、どんなことでもお電話にてお受けします。</p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="label">📞 お問い合わせ</div>
-          <div class="value phone">090-3603-4400</div>
-        </div>
-        <div class="contact-item">
-          <div class="label">⏰ 運行時間</div>
-          <div class="value">8:00〜17:00</div>
-          <div style="font-size:0.72rem; opacity:0.8; margin-top:4px;">※土曜日は午前中のみ<br>※日曜・祝日休み<br>※時間外はご相談ください</div>
-        </div>
-        <div class="contact-item">
-          <div class="label">📍 所在地</div>
-          <div class="value" style="font-size:0.9rem;">筑紫野市下見353-3</div>
-          <div style="font-size:0.72rem; opacity:0.8; margin-top:4px;">西鉄筑紫駅近く</div>
-        </div>
-      </div>
-      <a href="tel:090-3603-4400" class="btn-white">📞 090-3603-4400 に電話する</a>
-      <div class="sns-section">
-        <div class="sns-label">こちらからお問い合わせも</div>
-        <div class="sns-icons">
-          <a href="https://lin.ee/uNVUMtk" target="_blank" rel="noopener" class="sns-icon-link">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
-              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 5.016 4.434 9.22 10.436 10.012.406.089.959.272 1.099.626.125.316.083.811.038 1.13l-.164 1.028c-.045.326-.27 1.287 1.12.701 1.389-.587 7.496-4.41 10.228-7.548C23.234 14.454 24 12.479 24 10.314"/>
-            </svg>
-            LINE
-          </a>
-          <a href="https://www.instagram.com/hapihapitaku/?hl=ja" target="_blank" rel="noopener" class="sns-icon-link">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            Instagram
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="inner">
+<div class="section-label">Contact</div>
+<h2>お問い合わせ・<span>ご予約</span></h2>
+<div class="divider"></div>
+<div class="contact-card">
+<h2>どんなことでも、まずはお気軽にご相談ください。</h2>
+<p>予約・相談・見積もり、どんなことでもお電話にてお受けします。</p>
+<div class="contact-info">
+<div class="contact-item">
+<div class="label">📞 お問い合わせ</div>
+<div class="value phone">090-3603-4400</div>
 </div>
-
+<div class="contact-item">
+<div class="label">⏰ 運行時間</div>
+<div class="value">8:00〜17:00</div>
+<div style="font-size:0.72rem; opacity:0.8; margin-top:4px;">※土曜日は午前中のみ<br>※日曜・祝日休み<br>※時間外はご相談ください</div>
+</div>
+<div class="contact-item">
+<div class="label">📍 所在地</div>
+<div class="value" style="font-size:0.9rem;">筑紫野市下見353-3</div>
+<div style="font-size:0.72rem; opacity:0.8; margin-top:4px;">西鉄筑紫駅近く</div>
+</div>
+</div>
+<a href="tel:090-3603-4400" class="btn-white">📞 090-3603-4400 に電話する</a>
+<div class="sns-section">
+<div class="sns-label">こちらからお問い合わせも</div>
+<div class="sns-icons">
+<a href="https://lin.ee/uNVUMtk" target="_blank" rel="noopener" class="sns-icon-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+<path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 5.016 4.434 9.22 10.436 10.012.406.089.959.272 1.099.626.125.316.083.811.038 1.13l-.164 1.028c-.045.326-.27 1.287 1.12.701 1.389-.587 7.496-4.41 10.228-7.548C23.234 14.454 24 12.479 24 10.314"/>
+</svg>
+LINE
+</a>
+<a href="https://www.instagram.com/hapihapitaku/?hl=ja" target="_blank" rel="noopener" class="sns-icon-link">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+</svg>
+Instagram
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- QR CODE -->
 <div class="qr-section">
-  <div class="section-label" style="margin-bottom:6px;">QR Code</div>
-  <h2 style="font-size:1.4rem; margin-bottom:10px;">サイトURLをスマホで開く</h2>
-  <div class="divider" style="margin:0 auto 20px;"></div>
-  <p style="font-size:0.88rem; color:#666; margin-bottom:20px;">スマートフォンのカメラでQRコードを読み取るとこのサイトにアクセスできます。</p>
-  <div id="qrcode" style="display:inline-block; padding:16px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(109,179,63,0.2);"></div>
-  <p id="qr-url" style="margin-top:12px; font-size:0.78rem; color:var(--muted);"></p>
+<div class="section-label" style="margin-bottom:6px;">QR Code</div>
+<h2 style="font-size:1.4rem; margin-bottom:10px;">サイトURLをスマホで開く</h2>
+<div class="divider" style="margin:0 auto 20px;"></div>
+<p style="font-size:0.88rem; color:#666; margin-bottom:20px;">スマートフォンのカメラでQRコードを読み取るとこのサイトにアクセスできます。</p>
+<div id="qrcode" style="display:inline-block; padding:16px; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(109,179,63,0.2);"></div>
+<p id="qr-url" style="margin-top:12px; font-size:0.78rem; color:var(--muted);"></p>
 </div>
-
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="logo-footer.png" alt="はぴタク" style="height:189px; object-fit:contain; vertical-align:middle;"></div>
-  <div class="footer-address">代表：野村 優一　〒810-0021　筑紫野市下見353-3（西鉄筑紫駅近く）</div>
-  <div class="footer-links">
-    <a href="#about">サービス概要</a>
-    <a href="#reasons">選ばれる理由</a>
-    <a href="#flow">ご利用の流れ</a>
-    <a href="#price">料金表</a>
-    <a href="#contact">お問い合わせ</a>
-  </div>
-  <div style="margin-top:14px; font-size:0.78rem; opacity:0.45;">
-    © 2026 介護福祉タクシー はぴタク. All rights reserved.
-  </div>
+<div class="footer-logo"><img src="logo-footer.png" alt="はぴタク" style="height:189px; object-fit:contain; vertical-align:middle;"></div>
+<div class="footer-address">代表：野村 優一 〒810-0021 筑紫野市下見353-3（西鉄筑紫駅近く）</div>
+<div class="footer-links">
+<a href="#about">サービス概要</a>
+<a href="#reasons">選ばれる理由</a>
+<a href="#flow">ご利用の流れ</a>
+<a href="#price">料金表</a>
+<a href="#contact">お問い合わせ</a>
+</div>
+<div style="margin-top:14px; font-size:0.78rem; opacity:0.45;">
+© 2026 介護福祉タクシー はぴタク. All rights reserved.
+</div>
 </footer>
-
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const navMobile = document.getElementById('nav-mobile');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navMobile.classList.toggle('open');
-  });
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    navMobile.classList.remove('open');
-  }
-  (function() {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
-    script.onload = function() {
-      const url = window.location.origin + window.location.pathname;
-      document.getElementById('qr-url').textContent = url;
-      new QRCode(document.getElementById('qrcode'), {
-        text: url, width: 180, height: 180,
-        colorDark: '#4A8A22', colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    };
-    document.head.appendChild(script);
-  })();
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
-  });
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('nav-mobile');
+hamburger.addEventListener('click', () => {
+hamburger.classList.toggle('open');
+navMobile.classList.toggle('open');
+});
+function closeMenu() {
+hamburger.classList.remove('open');
+navMobile.classList.remove('open');
+}
+(function() {
+const script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+script.onload = function() {
+const url = window.location.origin + window.location.pathname;
+document.getElementById('qr-url').textContent = url;
+new QRCode(document.getElementById('qrcode'), {
+text: url, width: 180, height: 180,
+colorDark: '#4A8A22', colorLight: '#ffffff',
+correctLevel: QRCode.CorrectLevel.M
+});
+};
+document.head.appendChild(script);
+})();
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+a.addEventListener('click', e => {
+const target = document.querySelector(a.getAttribute('href'));
+if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+});
+});
 </script>
 </body>
 </html>
